@@ -1,3 +1,7 @@
+# сборка проекта
+install:
+	uv sync
+
 build:
 	./build.sh
 
