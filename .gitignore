@@ -1,4 +1,3 @@
-# Python-generated files
 __pycache__/
 *.py[oc]
 build/
@@ -11,3 +10,9 @@ wheels/
 .env
 
 *.txt
+.pytest_cache/
+.ruff_cache/
+.vscode/
+.python-version
+.old
+tmp
