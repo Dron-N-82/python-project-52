@@ -4,15 +4,16 @@ build/
 dist/
 wheels/
 *.egg-info
-
-# Virtual environments
-.venv
+.coverage
+coverage.xml
+.venv/
 .env
-
+*.sqlite3
 *.txt
 .pytest_cache/
 .ruff_cache/
 .vscode/
 .python-version
 .old
-tmp
+tmp/
+staticfiles/
