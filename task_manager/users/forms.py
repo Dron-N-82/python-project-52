@@ -1,30 +1,33 @@
 from django import forms
 # from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-
+# from django.contrib.auth.views import LoginView, LogoutView
 # from django.forms import ModelForm
 from .models import User
+from django.utils.translation import gettext as _
 
 
 class CreateUserForm(forms.ModelForm):
     password = forms.CharField(
         required=True,
-        label='Пароль',
+        label=_("Password"), # 'Пароль'
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
                 }),
-        help_text='<ul><li>Ваш пароль должен содержать как минимум 3 символа.</li></ul>'
+        help_text=_('Your password must contain at least 3 characters.')
+        # '<ul><li>Ваш пароль должен содержать как минимум 3 символа.</li></ul>'
         )
     
     password_confirm = forms.CharField(
         required=True,
-        label='Подтверждение пароля',
+        label=_("Confirm Password"), # 'Подтверждение пароля'
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
                 }),
-        help_text='Для подтверждения введите, пожалуйста, пароль ещё раз.'
+        help_text=_('To confirm, please enter your password again.')
+        # Для подтверждения введите, пожалуйста, пароль ещё раз.
         )
         
     
@@ -37,12 +40,13 @@ class CreateUserForm(forms.ModelForm):
                   'password_confirm'
                   ]
         labels = {
-            'first_name': 'Имя',                 # ваше кастомное имя для поля 'first_name'
-            'last_name': 'Фамилия',              # для 'last_name'
-            'username': 'Имя пользователя',      # для 'username'
+            'first_name': _('First name'),               # ваше кастомное имя для поля 'first_name' 'Имя'
+            'last_name': _('Last_name'),                 # для 'last_name' 'Фамилия'
+            'username': _('Username'),                   # для 'username' 'Имя пользователя'
         }
         help_texts = {
-            'username': 'Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./+/-/_.'
+            'username': _('Required field. No more than 30 characters. Only letters, numbers, and symbols @/./+/-/_.')
+            # Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./+/-/_.
         }
         widgets = {
             'first_name': forms.TextInput(
@@ -63,10 +67,12 @@ class CreateUserForm(forms.ModelForm):
 
         if password and password_confirm:
             if password != password_confirm:
-                raise ValidationError("Пароли не совпадают.")
+                raise ValidationError(_("The passwords do not match."))
+            # Пароли не совпадают.
             
             if len(password) < 3:
-                raise ValidationError("Пароль должен быть болше 3-х символов.")
+                raise ValidationError(_("Password must be more than 3 characters."))
+            # "Пароль должен быть болше 3-х символов."
             
         return cleaned_data
 
@@ -78,30 +84,18 @@ class CreateUserForm(forms.ModelForm):
         return user
     
 
-class LoginUserForm(forms.ModelForm):
-    # password = forms.CharField(
-    #     widget=forms.PasswordInput(
-    #         attrs={
-    #             'class': 'form-control',
-    #             }),
-    #     label='Пароль'
-    #     )
-    
-    
-    class Meta:
-        model = User
-        fields = ['username',
-                  'password',
-                  ]
-        labels = {
-            'username': 'Имя пользователя',      # для 'username'
-            'password': 'Пароль'
-            }
-        widgets = {
-            'username': forms.TextInput(
-                attrs={'class': 'form-control',
-                    'required': True}),
-            'password': forms.PasswordInput(
-                attrs={'class': 'form-control',
-                    }),
-            }
+class LoginUserForm(forms.Form):
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control', 'required': True
+                }),
+        label=_('Username'), # 'Имя пользователя'
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                }),
+        label=_("Password"), # 'Пароль'
+        )

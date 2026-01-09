@@ -1,39 +1,71 @@
+{# Load the tag library #}
+{% load django_bootstrap5 %}
+{% load i18n %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <!DOCTYPE html>
 <html lang="ru-ru">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Менеджер задач Hexlet</title>
+    <title>{% trans "Task Manager Hexlet" %}</title>
+    <!-- Менеджер задач Hexlet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-light ms-3">
-      <a class="navbar-brand" href="/">Менеджер задач</a>
+      <a class="navbar-brand" href="/">{% trans "Task Manager" %}</a>
+      <!-- Менеджер задач -->
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/users/">Пользователи</a>
+            <a class="nav-link" href="/users/">{% trans "Users" %}</a>
+            <!-- Пользователи -->
           </li>
-          
         </ul>
-        <ul class="navbar-nav">
-          
+
+        {% if user.is_authenticated %}
+        
+          <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/login/">Вход</a>
+              <form action="{% url 'logout' %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="nav-link btn btn-link">
+                  {% trans "Exit" %}
+                  <!-- Выход -->
+                </button>
+              </form>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/create/">Регистрация</a>
-            </li>
+          </ul>
+
+        {% else %}
           
-        </ul>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/login/">{% trans "Login" %}</a>
+                <!-- Вход -->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/create/">{% trans "Registration" %}</a>
+                <!-- Регистрация -->
+              </li>
+          </ul>
+
+        {% endif %}
+
       </div>
     </nav>
+    
     <div class="container wrapper flex-grow-1">
-
-           {% block content %}{% endblock %}
+          {% bootstrap_messages %}
+          {% block content %}{% endblock %}
 
     </div>
     <footer>

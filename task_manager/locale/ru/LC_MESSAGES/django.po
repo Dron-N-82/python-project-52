@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-09 18:50+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: task_manager/templates/index.html:13
+msgid "Hello from Hexlet!"
+msgstr "Привет от Хекслета!"
+
+#: task_manager/templates/index.html:14
+msgid "Practical programming courses"
+msgstr "Практические курсы по программированию"
+
+#: task_manager/templates/index.html:17
+msgid "Find out more"
+msgstr "Узнать больше"
+
+#: task_manager/templates/layout.html:12
+msgid "Task Manager Hexlet"
+msgstr "Менеджер задач Hexlet"
+
+#: task_manager/templates/layout.html:19
+msgid "Task Manager"
+msgstr "Менеджер задач"
+
+#: task_manager/templates/layout.html:29
+#: task_manager/templates/users/index.html:7
+msgid "Users"
+msgstr "Пользователи"
+
+#: task_manager/templates/layout.html:41
+msgid "Exit"
+msgstr "Выход"
+
+#: task_manager/templates/layout.html:52
+#: task_manager/templates/users/login.html:7
+#: task_manager/templates/users/login.html:14
+msgid "Login"
+msgstr "Вход"
+
+#: task_manager/templates/layout.html:56
+#: task_manager/templates/users/create.html:7
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/create.html:13
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: task_manager/templates/users/delete.html:7
+msgid "Deleting a user"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/users/delete.html:9
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: task_manager/templates/users/delete.html:13
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: task_manager/templates/users/index.html:15 task_manager/users/forms.py:45
+#: task_manager/users/forms.py:93
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/templates/users/index.html:17
+msgid "Full name"
+msgstr "Полное имя"
+
+#: task_manager/templates/users/index.html:19
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: task_manager/templates/users/index.html:21
+msgid "Operations"
+msgstr "Операции"
+
+#: task_manager/templates/users/index.html:33
+#: task_manager/templates/users/update.html:14
+msgid "Update"
+msgstr "Изменить"
+
+#: task_manager/templates/users/index.html:36
+#, fuzzy
+#| msgid "delete"
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/templates/users/update.html:8
+msgid "Update user"
+msgstr "Изменение пользователя"
+
+#: task_manager/users/forms.py:13 task_manager/users/forms.py:100
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/users/forms.py:18
+msgid "Your password must contain at least 3 characters."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: task_manager/users/forms.py:24
+msgid "Confirm Password"
+msgstr "Подтверждение пароля"
+
+#: task_manager/users/forms.py:29
+msgid "To confirm, please enter your password again."
+msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+
+#: task_manager/users/forms.py:43
+msgid "First name"
+msgstr "Имя"
+
+#: task_manager/users/forms.py:44
+msgid "Last_name"
+msgstr "Фамилия"
+
+#: task_manager/users/forms.py:48
+msgid ""
+"Required field. No more than 30 characters. Only letters, numbers, and "
+"symbols @/./+/-/_."
+msgstr ""
+"Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
+
+#: task_manager/users/forms.py:70
+msgid "The passwords do not match."
+msgstr "Пароли не совпадают."
+
+#: task_manager/users/forms.py:74
+msgid "Password must be more than 3 characters."
+msgstr "Пароль должен быть болше 3-х символов."
+
+#: task_manager/users/views.py:32
+msgid "The user is registered"
+msgstr "Пользователь зарегистрирован"
+
+#: task_manager/users/views.py:62
+msgid "You have logged in successfully"
+msgstr "Вы успешно вошли"
+
+#: task_manager/users/views.py:65
+msgid "Incorrect username or password"
+msgstr "Неверное имя пользователя или пароль"
+
+#: task_manager/users/views.py:77
+msgid "You're out"
+msgstr "Вы вышли"
+
+#: task_manager/users/views.py:86
+msgid "You are not logged in! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, войдите в систему."
+
+#: task_manager/users/views.py:98
+msgid "You can only change your user's details!"
+msgstr "Вы можете изменить данные только своего пользователя!"
+
+#: task_manager/users/views.py:113
+msgid "User data has been updated"
+msgstr "Данные пользователя обновлены"
+
+#: task_manager/users/views.py:128
+msgid "You can only delete your own user!"
+msgstr "Вы можете удалить только своего пользователя!"
+
+#: task_manager/users/views.py:142
+msgid "The user has been deleted"
+msgstr "Пользователь удалён"
+
+#~ msgid "update"
+#~ msgstr "изменить"

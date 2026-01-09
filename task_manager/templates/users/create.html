@@ -1,19 +1,18 @@
 {% extends "layout.html" %}
-{% load django_bootstrap5 %}     
-
+{% load django_bootstrap5 %}
+{% load i18n %}
 
 {% block content %}
 
-    <h1 class="my-4">Регистрация</h1>
+    <h1 class="my-4">{% trans "Registration" %}</h1>
+    <!-- Регистрация -->
 
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <!-- <table border="1">
-        {{ form.as_p }}
-        <br> -->
-        <input class="btn btn-outline-primary" type="submit" value="Зарегистрировать">
-        <!-- </table> -->
+        <input class="btn btn-outline-primary" type="submit" value="{% trans 'Register' %}">
+        <!-- Зарегистрировать -->
+
     </form>
 
 

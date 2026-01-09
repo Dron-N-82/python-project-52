@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-
+{% load i18n %}
 
 
 {% block content %}
@@ -10,10 +10,12 @@
 
     <div class="card">
       <div class="card-body p-5 bg-light">
-        <div class="display-4">Привет от Хекслета!</div>
-        <p class="lead">Практические курсы по программированию</p>
+        <div class="display-4">{% trans "Hello from Hexlet!" %}</div>
+        <p class="lead">{% trans "Practical programming courses" %}</p>
+        <!-- Практические курсы по программированию -->
         <hr>
-        <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">Узнать больше</a>
+        <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io">{% trans "Find out more" %}</a>
+        <!-- Узнать больше -->
       </div>
     </div>
 

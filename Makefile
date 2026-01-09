@@ -2,8 +2,14 @@
 install:
 	uv sync
 
+dev:
+	uv run manage.py runserver 0.0.0.0:8081
+
 collectstatic:
 	uv run python manage.py collectstatic --noinput
+
+migrate:
+	uv run python manage.py migrate
 	
 build:
 	./build.sh
