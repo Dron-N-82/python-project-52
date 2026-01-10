@@ -4,14 +4,12 @@
 
 {% block content %}
     <div class="container wrapper flex-grow-1">
-        <h1 class="my-4">{% trans "Registration" %}</h1>
-        <!-- Регистрация -->
+        <h1 class="my-4">{% trans "Update status" %}</h1>
 
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input class="btn btn-outline-primary" type="submit" value="{% trans 'Register' %}">
-            <!-- Зарегистрировать -->
+            <input class="btn btn-outline-primary" type="submit" value="{% trans 'Update' %}">
         </form>
     </div>
 

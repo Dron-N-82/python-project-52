@@ -15,7 +15,7 @@ class CreateUserForm(forms.ModelForm):
             attrs={
                 'class': 'form-control',
                 }),
-        help_text=_('Your password must contain at least 3 characters.')
+        help_text=f"<ul><li>{_('Your password must contain at least 3 characters.')}</li></ul>"
         # '<ul><li>Ваш пароль должен содержать как минимум 3 символа.</li></ul>'
         )
     

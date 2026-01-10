@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
+    'django_extensions',
     'task_manager',
     'task_manager.users',
-    'django_bootstrap5',
+    'task_manager.statuses',
 ]
 
 AUTH_USER_MODEL = 'users.User'
