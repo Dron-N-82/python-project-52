@@ -33,7 +33,7 @@ class CreateStatusView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         form = CreateStatusForm(request.POST)  # Получаем данные формы из запроса
         if form.is_valid():  # Проверяем данные формы на корректность
             form.save()
-            messages.success(request, _('The status is added'))
+            messages.success(request, _('Status successfully created'))
             return redirect(reverse('statuses'))
         return render(request, "statuses/create.html", {"form": form})
         
