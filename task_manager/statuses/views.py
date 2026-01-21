@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib import messages, auth
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext as _
+from django.db.models import ProtectedError
 
 from task_manager.statuses.models import Status
 from .forms import CreateStatusForm
@@ -89,6 +90,14 @@ class DeleteStatusView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         status_id = kwargs.get("id")
         status = get_object_or_404(Status, id=status_id)
         if status:
-            status.delete()
-            messages.info(request, _('The status has been deleted'))
+            try:
+                # Попытка удалить статус
+                status.delete()
+            except ProtectedError:
+                # Если возникла ошибка ProtectedError, покажите сообщение и перенаправьте
+                messages.error(request, _('The status cannot be deleted because it is used in tasks'))
+                # Невозможно удалить статус, потому что он используется в задачах."
+                return redirect('statuses')
+            # status.delete()
+        messages.info(request, _('The status has been deleted'))
         return redirect('statuses')

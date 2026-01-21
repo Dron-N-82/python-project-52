@@ -18,5 +18,8 @@ build:
 render-start:
 	gunicorn task_manager.wsgi
 
+test:
+	uv run pytest --ds=task_manager.settings --reuse-db -v -l
+
 lint:
-	uv run ruff check
+	uv run ruff check .

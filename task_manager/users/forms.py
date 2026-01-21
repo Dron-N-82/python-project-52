@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 # from django.contrib.auth.views import LoginView, LogoutView
@@ -7,19 +8,22 @@ from .models import User
 from django.utils.translation import gettext as _
 
 
-class CreateUserForm(forms.ModelForm):
-    password = forms.CharField(
+# class CreateUserForm(forms.ModelForm):
+class CreateUserForm(UserCreationForm):
+    password1 = forms.CharField(
         required=True,
         label=_("Password"), # 'Пароль'
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
                 }),
+        # help_text=_('Your password must contain at least 3 characters.')
         help_text=f"<ul><li>{_('Your password must contain at least 3 characters.')}</li></ul>"
         # '<ul><li>Ваш пароль должен содержать как минимум 3 символа.</li></ul>'
         )
     
-    password_confirm = forms.CharField(
+    # password_confirm = forms.CharField(
+    password2 = forms.CharField(
         required=True,
         label=_("Confirm Password"), # 'Подтверждение пароля'
         widget=forms.PasswordInput(
@@ -36,8 +40,10 @@ class CreateUserForm(forms.ModelForm):
         fields = ['first_name',
                   'last_name',
                   'username',
-                  'password',
-                  'password_confirm'
+                #   'password',
+                #   'password_confirm'
+                'password1',
+                'password2',
                   ]
         labels = {
             'first_name': _('First name'),               # ваше кастомное имя для поля 'first_name' 'Имя'
@@ -62,15 +68,15 @@ class CreateUserForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        password_confirm = cleaned_data.get("password_confirm")
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
 
-        if password and password_confirm:
-            if password != password_confirm:
+        if password1 and password2:
+            if password1 != password2:
                 raise ValidationError(_("The passwords do not match."))
             # Пароли не совпадают.
             
-            if len(password) < 3:
+            if len(password1) < 3:
                 raise ValidationError(_("Password must be more than 3 characters."))
             # "Пароль должен быть болше 3-х символов."
             
@@ -78,7 +84,7 @@ class CreateUserForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data['password'])
+        user.set_password(self.cleaned_data['password1'])
         if commit:
             user.save()
         return user
@@ -92,7 +98,7 @@ class LoginUserForm(forms.Form):
                 }),
         label=_('Username'), # 'Имя пользователя'
     )
-    password = forms.CharField(
+    password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',

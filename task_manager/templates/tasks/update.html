@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container wrapper flex-grow-1">
+        <h1 class="my-4">{% trans "Update task" %}</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input class="btn btn-outline-primary" type="submit" value="{% trans 'Update' %}">
+        </form>
+    </div>
+
+{% endblock %}

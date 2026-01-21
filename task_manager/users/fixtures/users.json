@@ -1,0 +1,56 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$1200000$pBHSYi5tcopi3IlesHShmV$gbiiYJHzXgMwGLw8vattBxmEHFAcr6JNqG87Zb9UJcU=",
+            "last_login": "2026-01-11T19:40:57.704Z",
+            "is_superuser": false,
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-12-21T10:35:08.973Z",
+            "username": "@Dron",
+            "first_name": "Андрей",
+            "last_name": "Новиков",
+            "groups": [],
+            "user_permissions": []
+            }
+    },
+    {
+        "model": "users.user",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$1200000$uDo13IrDxYZKfghh5PN8bJ$Ce0rXUrOGScJS/odWts4n+dWOBAIUw/45FZncTAfuUw=",
+            "last_login": "2026-01-08T15:23:56.759Z",
+            "is_superuser": false,
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-12-28T09:21:24.451Z",
+            "username": "Test1",
+            "first_name": "М",
+            "last_name": "Н",
+            "groups": [],
+            "user_permissions": []
+            }
+    },
+    {
+        "model": "users.user",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$1200000$qv4nKsVTpGAoETFPCDivFD$7SFpydJCCrZxvj0BzzZJFQ1fRQJGGrJi8TJhznSE4XU=",
+            "last_login": "2026-01-12T19:09:06.176Z",
+            "is_superuser": false,
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2026-01-08T09:32:49.477Z",
+            "username": "Test2",
+            "first_name": "Б",
+            "last_name": "Н",
+            "groups": [],
+            "user_permissions": []
+            }
+    }
+]

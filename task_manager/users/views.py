@@ -55,7 +55,8 @@ class LoginUserView(View):
         form = LoginUserForm(request.POST)  # Получаем данные формы из запроса
         if form.is_valid():  # Проверяем данные формы на корректность
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            # password = form.cleaned_data['password']
+            password = form.cleaned_data['password1']
             user = auth.authenticate(request, username=username, password=password)
             if user is not None:
                 auth.login(request, user)

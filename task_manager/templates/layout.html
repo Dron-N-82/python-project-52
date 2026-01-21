@@ -39,6 +39,10 @@
               <!-- Пользователи -->
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/tasks/">{% trans "Tasks" %}</a>
+              <!-- Пользователи -->
+            </li>
+            <li class="nav-item">
               <form action="{% url 'logout' %}" method="post" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="nav-link btn btn-link">
@@ -63,7 +67,11 @@
           </ul>
 
         {% endif %}
-
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item me-3">
+              User: {{ user }}
+            </li>
+          </ul>
       </div>
     </nav>
     
