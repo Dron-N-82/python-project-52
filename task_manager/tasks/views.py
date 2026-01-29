@@ -5,7 +5,8 @@ from django.contrib import messages, auth
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext as _
 
-from task_manager.tasks.models import Task
+# from task_manager.tasks.models import Task
+from .models import Task
 from .forms import CreateTaskForm, ViewTaskForm
 
 # Create your views here.
@@ -23,7 +24,6 @@ class IndexView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         template_name = 'tasks/index.html'
         tasks = Task.objects.all()
-        # print(tasks)
         context = {"tasks": tasks}
         return render(request, template_name, context)
     
@@ -83,32 +83,30 @@ class DeleteTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         task_id = kwargs.get('id')
         task = get_object_or_404(Task, id=task_id)
         if request.user.pk != task.author.pk:
-            messages.error(request, _('A task can only be deleted by its author'))
+            messages.error(request, _('Only the author can delete this task'))
             return redirect('tasks')
         return render(
             request,
             "tasks/delete.html",
             {'task': task}
-                )
+            )
         
 
     def post(self, request, *args, **kwargs):
         task_id = kwargs.get("id")
         task = get_object_or_404(Task, id=task_id)
-        print(request.user.pk)
-        print(task.author.pk)
-        if task:
-            task.delete()
-            messages.info(request, _('The task has been deleted'))
+        if request.user.pk != task.author.pk:
+            messages.error(request, _('Only the author can delete this task'))
+            return redirect('tasks')
+        task.delete()
+        messages.info(request, _('The task has been deleted'))
         return redirect('tasks')
     
-
+    
 class ViewTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('id')
         task = get_object_or_404(Task, id=task_id)
-        print(task)
-        # form = ViewTaskForm(instance=task)
         return render(
             request,
             "tasks/task.html",

@@ -6,7 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext as _
 from django.db.models import ProtectedError
 
-from task_manager.statuses.models import Status
+# from task_manager.statuses.models import Status
+from .models import Status
 from .forms import CreateStatusForm
 
 # Create your views here.

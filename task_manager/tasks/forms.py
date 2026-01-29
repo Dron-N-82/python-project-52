@@ -15,7 +15,8 @@ class CreateTaskForm(forms.ModelForm):
         queryset=User.objects.all(),
         # queryset=Task.objects.values_list('status', flat=True).distinct(),
         label=_('Executor'),
-        widget=forms.Select(attrs={'class': 'form-control'})
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        required=False
     )
 
     class Meta:
