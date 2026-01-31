@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext as _
 
 # from task_manager.tasks.models import Task
-from .models import Task
+from .models import Task, Label
 from .forms import CreateTaskForm, ViewTaskForm
 
 # Create your views here.
@@ -107,8 +107,11 @@ class ViewTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('id')
         task = get_object_or_404(Task, id=task_id)
+        labels = task.label.all()
+        print(labels)
         return render(
             request,
             "tasks/task.html",
-            {'task': task}
+            {'task': task,
+             'labels': labels}
         )

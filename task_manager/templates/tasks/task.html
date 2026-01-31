@@ -32,22 +32,17 @@
         <div class="col">Дата создания</div>
         <div class="col">{{ task.created_at|date:'d.m.Y H:i' }}</div>
       </div>
-      <!-- <div class="row p-1">
+      <div class="row p-1">
         <div class="col">
-          <h6>Метки:</h6>
+          <h6>{% trans "Labels" %}:</h6>
           <ul>
-            
-              <li>Name_tag</li>
-            
-              <li>chopa2</li>
-            
-              <li>аапап</li>
-            
-              <li>qqshka</li>
-            
+          {% for label in labels %}
+            <li>{{ label.name }}</li>
+          {% endfor %}
           </ul>
+
         </div>
-      </div> -->
+      </div>
       <div class="row p-1">
         <div class="col">
           <a href="/tasks/{{ task.id }}/update/">Изменить</a>

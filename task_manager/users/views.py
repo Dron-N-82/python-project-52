@@ -18,7 +18,8 @@ from django.utils.translation import gettext as _
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        users = User.objects.all()
+        # users = User.objects.all()
+        users = User.objects.filter(is_superuser=0)
         context = {"users": users}
         return render(request, "users/index.html", context)
     

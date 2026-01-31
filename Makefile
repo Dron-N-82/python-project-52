@@ -22,9 +22,9 @@ render-start:
 	gunicorn task_manager.wsgi
 
 test:
-	uv run pytest --ds=task_manager.settings --reuse-db -v -l -n auto
+# 	uv run pytest --ds=task_manager.settings --reuse-db -v -l -n auto
 # 	uv run pytest --ds=task_manager.settings --reuse-db -v -l
-# 	uv run pytest --ds=task_manager.settings --reuse-db -n auto
+	uv run pytest --ds=task_manager.settings --reuse-db -n auto
 
 lint:
 	uv run ruff check .

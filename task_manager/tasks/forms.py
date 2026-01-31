@@ -1,6 +1,6 @@
 from django import forms
-from django.core.exceptions import ValidationError
-from .models import Task, Status, User
+# from django.core.exceptions import ValidationError
+from .models import Task, Status, User, Label
 from django.utils.translation import gettext_lazy as _
 
 
@@ -12,16 +12,24 @@ class CreateTaskForm(forms.ModelForm):
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     executor = forms.ModelChoiceField(
-        queryset=User.objects.all(),
+        # queryset=User.objects.all(),
+        queryset = User.objects.filter(is_superuser=0),
         # queryset=Task.objects.values_list('status', flat=True).distinct(),
         label=_('Executor'),
         widget=forms.Select(attrs={'class': 'form-control'}),
         required=False
     )
+    label = forms.ModelMultipleChoiceField(
+        queryset=Label.objects.all(),
+        # queryset=Task.objects.values_list('label', flat=True).distinct(),
+        label=_('Label'),
+        widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
+        required=False
+    )
 
     class Meta:
         model = Task
-        fields = ['name', 'description', 'status', 'executor']
+        fields = ['name', 'description', 'status', 'executor', 'label']
         labels = {
             'name': _('Name'),
             'description': _('Description'),
