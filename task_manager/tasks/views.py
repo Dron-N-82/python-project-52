@@ -8,6 +8,7 @@ from django.utils.translation import gettext as _
 # from task_manager.tasks.models import Task
 from .models import Task, Label
 from .forms import CreateTaskForm, ViewTaskForm
+from .filter import TaskFilter
 
 # Create your views here.
 class AuthRequiredMessageMixin:
@@ -23,8 +24,12 @@ class AuthRequiredMessageMixin:
 class IndexView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         template_name = 'tasks/index.html'
-        tasks = Task.objects.all()
-        context = {"tasks": tasks}
+        queryset = Task.objects.all()
+        filter = TaskFilter(request.GET, queryset=queryset)
+        filter.request = request
+        context = {
+            "tasks": filter.qs,
+            "filter": filter}
         return render(request, template_name, context)
     
 
@@ -108,10 +113,10 @@ class ViewTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         task_id = kwargs.get('id')
         task = get_object_or_404(Task, id=task_id)
         labels = task.label.all()
-        print(labels)
         return render(
             request,
             "tasks/task.html",
-            {'task': task,
+            {"request": request,
+             'task': task,
              'labels': labels}
         )

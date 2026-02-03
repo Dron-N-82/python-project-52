@@ -89,13 +89,23 @@ class Test_Tasks:
         assert Task.objects.count() == 1
         assert Task.objects.filter(id=task.pk).exists()
                 
-
-    '''
-    assert Task.objects.count() == 0
-            status = Status.objects.create(name='Новая задача')
-            task = Task.objects.create(
-                name='Задача',
-                author=self.user,
-                status=status
-                )
-    '''
+    def test_view_filter_tasks(self, login):
+        self.client, self.user1, self.user2, self.status = login
+        status1 = Status.objects.create(name='Завершена')
+        status2 = Status.objects.create(name='В работе')
+        Task.objects.create(
+            name='Задача 1',
+            author=self.user1,
+            status=status1,
+            executor=self.user2
+            )
+        Task.objects.create(
+            name='Задача 2',
+            author=self.user2,
+            status=status2,
+            executor=self.user2
+            )
+        response = self.client.get(reverse('tasks'))
+        assert response.status_code == 200
+        assert Task.objects.filter(author_id=1).count() == 1
+        assert Task.objects.filter(executor_id=2).count() == 2

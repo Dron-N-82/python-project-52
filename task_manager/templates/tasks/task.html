@@ -3,7 +3,8 @@
 {% load i18n %}
 
 {% block content %}
-    <div class="container wrapper flex-grow-1">
+<a href="{{ request.META.HTTP_REFERER|default:'/' }}">Назад</a>    
+<div class="container wrapper flex-grow-1">
     <h1 class="my-4">{% trans "View task" %}</h1>
     
     

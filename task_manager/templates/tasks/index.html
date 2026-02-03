@@ -3,10 +3,23 @@
 {% load i18n %}
 
 {% block content %}
-
   <h1 class="my-4">{% trans "Tasks" %}</h1>
-  <a class="btn btn-outline-primary" href="/tasks/create/" role="button">{% trans "Create task" %}</a>
-  <div id="content"> 
+  <a class="btn btn-outline-primary mb-3" href="/tasks/create/" role="button">{% trans "Create task" %}</a>
+  
+  <!-- Сюда добавить форму для фильтрации -->
+
+  <div class="card mb-3">
+    <div class="card-body bg-light">
+      <form class="form-inline center" method="get">
+        <!-- {% csrf_token %} -->
+        {% bootstrap_form filter.form %}
+        <input class="btn btn-outline-primary" type="submit" value="{% trans 'Show' %}">
+        <!-- Показать -->
+      </form>
+  
+    </div>
+  </div>
+  <!-- <div id="content">  -->
 
     <table class="table table-striped table-hover">
       <thead>
@@ -28,7 +41,7 @@
           <td><a href="/tasks/{{ task.id }}/">{{ task.name }}</a></td>
           <td>{{ task.status}}</td>
           <td>{{ task.author}}</td>
-          <td>{{ task.executor}}</td>
+          <td>{{ task.executor|default:""}}</td>
           <td>{{ task.created_at|date:'d.m.Y H:i' }}</td>
           <td>
             <a href="/tasks/{{ task.id }}/update/">{% trans "Update" %}</a>
@@ -41,6 +54,7 @@
         {% endfor %}
       </tbody>
     </table>
-  </div>
+  <!-- </div> -->
+
 
 {% endblock %}
