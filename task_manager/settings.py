@@ -30,6 +30,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", False)
 
+ROLLBAR_ACCESS_TOKEN = os.getenv("ROLLBAR_ACCESS_TOKEN")
+
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
@@ -69,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 
 ]
 
@@ -123,6 +126,12 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
+ROLLBAR = {
+    'access_token': ROLLBAR_ACCESS_TOKEN,
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': BASE_DIR,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/

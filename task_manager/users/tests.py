@@ -1,19 +1,22 @@
 # import pytest
+# from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-# from django.contrib.auth.models import User
 
 User = get_user_model()
 
+
 # Create your tests here.
+
+
 # @pytest.mark.django_db
 class UsersTest(TestCase):
     def setUp(self):
         self.user = User.objects.create(
             username="test",
-            first_name= 'New',
-            last_name= 'User'
+            first_name='New',
+            last_name='User'
             )
         self.user.set_password('ComplexPass123!') 
         self.user.save()

@@ -2,13 +2,13 @@ import pytest
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from .models import Label
-from ..tasks.models import Task
 from ..statuses.models import Status
+from ..tasks.models import Task
+from .models import Label
 
 User = get_user_model()
 
-# Create your tests here.
+
 @pytest.fixture
 def login(client):
     user = User.objects.create_user(
@@ -16,6 +16,7 @@ def login(client):
         )
     client.login(username='test', password='ComplexPass123!')
     return client, user
+
 
 @pytest.mark.django_db
 class Test_Label:
@@ -27,7 +28,9 @@ class Test_Label:
     def test_create_label(self, login):
         self.client, self.user = login
         assert Label.objects.count() == 0
-        response = self.client.post(reverse('label_create'), {'name': 'Новая метка'})
+        response = self.client.post(
+            reverse('label_create'),
+            {'name': 'Новая метка'})
         assert response.status_code == 302
         assert Label.objects.filter(name='Новая метка').exists()
         assert Label.objects.count() == 1
@@ -63,7 +66,7 @@ class Test_Label:
             author=self.user,
             status=status
             )
-        task.label.add(label) # Добавляем метку к задаче
+        task.label.add(label)   # Добавляем метку к задаче
         delete_url = reverse("label_delete", args=[label.pk])
         response = self.client.post(delete_url)
         assert Label.objects.filter(id=label.pk).exists()

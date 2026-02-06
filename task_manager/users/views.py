@@ -1,17 +1,16 @@
 # from django.views.generic import TemplateView
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views import View
-from django.urls import reverse
-from django.contrib import messages, auth
+from django.contrib import auth, messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.utils.translation import gettext as _
+from django.views import View
+
 # from django.contrib.auth import authenticate #, login
 from task_manager.users.models import User
+
 from .forms import CreateUserForm, LoginUserForm
-from django.utils.translation import gettext as _
 
-
-
-# Create your views here.
 # class IndexView(TemplateView):
 #     template_name = 'users/index.html'
 
@@ -34,7 +33,6 @@ class CreateUserView(View):
             return redirect(reverse('login'))
         return render(request, "users/create.html", {"form": form})
         
-
     # если метод GET, то создаем пустую форму
     def get(self, request, *args, **kwargs):
         form = CreateUserForm()  # Создаем экземпляр нашей формы
@@ -58,7 +56,9 @@ class LoginUserView(View):
             username = form.cleaned_data['username']
             # password = form.cleaned_data['password']
             password = form.cleaned_data['password1']
-            user = auth.authenticate(request, username=username, password=password)
+            user = auth.authenticate(request,
+                                    username=username,
+                                    password=password)
             if user is not None:
                 auth.login(request, user)
                 messages.success(request, _('You have logged in successfully'))
@@ -97,7 +97,9 @@ class UpdateUserView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         user = get_object_or_404(User, id=user_id)
         form = CreateUserForm(instance=user)
         if request.user.pk != user.pk:
-            messages.error(request, _("You can only change your user's details!"))
+            messages.error(request,
+                           _("You can only change your user's details!")
+                           )
             return redirect('users')
         return render(
             request,

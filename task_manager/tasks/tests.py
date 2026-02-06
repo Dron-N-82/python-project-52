@@ -2,10 +2,11 @@ import pytest
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from .models import Task
 from ..statuses.models import Status
+from .models import Task
 
 User = get_user_model()
+
 
 @pytest.fixture
 def login(client):
@@ -18,6 +19,7 @@ def login(client):
     client.login(username='auth', password='ComplexPass123!')
     status = Status.objects.create(name='Новая задача')
     return client, user1, user2, status
+
 
 @pytest.mark.django_db
 class Test_Tasks:
@@ -86,9 +88,10 @@ class Test_Tasks:
             )
         delete_url = reverse("task_delete", kwargs={"id": task.pk})
         response = self.client.post(delete_url)
+        assert response.status_code == 302
         assert Task.objects.count() == 1
         assert Task.objects.filter(id=task.pk).exists()
-                
+
     def test_view_filter_tasks(self, login):
         self.client, self.user1, self.user2, self.status = login
         status1 = Status.objects.create(name='Завершена')

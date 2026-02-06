@@ -1,7 +1,9 @@
 from django import forms
+
 # from django.core.exceptions import ValidationError
-from .models import Task, Status, User, Label
 from django.utils.translation import gettext_lazy as _
+
+from .models import Label, Status, Task, User
 
 
 class CreateTaskForm(forms.ModelForm):
@@ -13,7 +15,7 @@ class CreateTaskForm(forms.ModelForm):
     )
     executor = forms.ModelChoiceField(
         # queryset=User.objects.all(),
-        queryset = User.objects.filter(is_superuser=0),
+        queryset=User.objects.filter(is_superuser=0),
         # queryset=Task.objects.values_list('status', flat=True).distinct(),
         label=_('Executor'),
         widget=forms.Select(attrs={'class': 'form-control'}),
@@ -40,8 +42,8 @@ class CreateTaskForm(forms.ModelForm):
                 attrs={'class': 'form-control',
                     'required': True}),
             'description': forms.Textarea(attrs={
-                'placeholder': _('Enter a description of the task...'), #'Введите описание задачи...'
-                'class': 'form-control',  # для стилизации, если используете Bootstrap
+                'placeholder': _('Enter a description of the task...'),
+                'class': 'form-control',
                 'rows': 10}),
             }
         

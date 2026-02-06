@@ -1,16 +1,19 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views import View
-from django.urls import reverse
-from django.contrib import messages, auth
+from django.contrib import messages  # , auth
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.translation import gettext as _
 from django.db.models import ProtectedError
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.utils.translation import gettext as _
+from django.views import View
+
+from .forms import CreateStatusForm
 
 # from task_manager.statuses.models import Status
 from .models import Status
-from .forms import CreateStatusForm
 
 # Create your views here.
+
+
 class AuthRequiredMessageMixin:
     login_url = 'login'  
     
@@ -32,14 +35,15 @@ class IndexView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
 class CreateStatusView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
     # если метод POST, то мы обрабатываем данные
     def post(self, request, *args, **kwargs):
-        form = CreateStatusForm(request.POST)  # Получаем данные формы из запроса
-        if form.is_valid():  # Проверяем данные формы на корректность
+        # Получаем данные формы из запроса
+        form = CreateStatusForm(request.POST)
+        # Проверяем данные формы на корректность
+        if form.is_valid():
             form.save()
             messages.success(request, _('Status successfully created'))
             return redirect(reverse('statuses'))
         return render(request, "statuses/create.html", {"form": form})
         
-
     # если метод GET, то создаем пустую форму
     def get(self, request, *args, **kwargs):
         form = CreateStatusForm()  # Создаем экземпляр нашей формы
@@ -53,9 +57,6 @@ class UpdateStatusView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         status_id = kwargs.get('id')
         status = get_object_or_404(Status, id=status_id)
         form = CreateStatusForm(instance=status)
-        # if request.user.pk != user.pk:
-        #     messages.error(request, _("You can only change your statuses details!"))
-        #     return redirect('statuses')
         return render(
             request,
             "statuses/update.html",
@@ -95,9 +96,13 @@ class DeleteStatusView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
                 # Попытка удалить статус
                 status.delete()
             except ProtectedError:
-                # Если возникла ошибка ProtectedError, покажите сообщение и перенаправьте
-                messages.error(request, _('The status cannot be deleted because it is used in tasks'))
-                # Невозможно удалить статус, потому что он используется в задачах."
+                # Если возникла ошибка ProtectedError,
+                # покажите сообщение и перенаправьте
+                messages.error(request,
+                               _('The status cannot be \
+                                 deleted because it is used in tasks'))
+                # Невозможно удалить статус,
+                # потому что он используется в задачах."
                 return redirect('statuses')
             # status.delete()
         messages.info(request, _('The status has been deleted'))

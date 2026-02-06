@@ -1,16 +1,19 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views import View
-from django.urls import reverse
-from django.contrib import messages, auth
+from django.contrib import messages  # , auth
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.translation import gettext as _
+from django.views import View
+
+from .filter import TaskFilter
+from .forms import CreateTaskForm  # , ViewTaskForm
 
 # from task_manager.tasks.models import Task
-from .models import Task, Label
-from .forms import CreateTaskForm, ViewTaskForm
-from .filter import TaskFilter
+from .models import Task  # , Label
 
 # Create your views here.
+
+
 class AuthRequiredMessageMixin:
     login_url = 'login'  
     
@@ -38,14 +41,13 @@ class CreateTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         form = CreateTaskForm(request.POST)  # Получаем данные формы из запроса
         if form.is_valid():  # Проверяем данные формы на корректность
-            task = form.save(commit=False) # создаем объект без сохранения
+            task = form.save(commit=False)  # создаем объект без сохранения
             task.author = request.user     # добавляем автора
             form.save()
             messages.success(request, _('Task successfully created'))
             return redirect(reverse('tasks'))
         return render(request, "tasks/create.html", {"form": form})
         
-
     # если метод GET, то создаем пустую форму
     def get(self, request, *args, **kwargs):
         form = CreateTaskForm()  # Создаем экземпляр нашей формы
@@ -59,9 +61,6 @@ class UpdateTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         task_id = kwargs.get('id')
         task = get_object_or_404(Task, id=task_id)
         form = CreateTaskForm(instance=task)
-        # if request.user.pk != user.pk:
-        #     messages.error(request, _("You can only change your statuses details!"))
-        #     return redirect('statuses')
         return render(
             request,
             "tasks/update.html",
@@ -96,7 +95,6 @@ class DeleteTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
             {'task': task}
             )
         
-
     def post(self, request, *args, **kwargs):
         task_id = kwargs.get("id")
         task = get_object_or_404(Task, id=task_id)

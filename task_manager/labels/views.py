@@ -1,16 +1,14 @@
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views import View
-from django.urls import reverse
-from django.contrib import messages, auth
+from django.contrib import messages  # , auth
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.translation import gettext as _
-from django.db.models import ProtectedError
+from django.views import View
 
-# from task_manager.labels.models import Label
-from .models import Label
 from .forms import CreateLabelForm
+from .models import Label
 
-# Create your views here.
+
 class AuthRequiredMessageMixin:
     login_url = 'login'  
     
@@ -38,7 +36,6 @@ class CreateLabelView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
             messages.success(request, _('Label successfully created'))
             return redirect(reverse('labels'))
         return render(request, "labels/create.html", {"form": form})
-        
 
     # если метод GET, то создаем пустую форму
     def get(self, request, *args, **kwargs):
@@ -53,9 +50,6 @@ class UpdateLabelView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         label_id = kwargs.get('id')
         label = get_object_or_404(Label, id=label_id)
         form = CreateLabelForm(instance=label)
-        # if request.user.pk != user.pk:
-        #     messages.error(request, _("You can only change your labels details!"))
-        #     return redirect('labels')
         return render(
             request,
             "labels/update.html",
@@ -92,7 +86,9 @@ class DeleteLabelView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         label_id = kwargs.get("id")
         label = get_object_or_404(Label, id=label_id)
         if label.tasks.exists():
-            messages.error(request, _('The label cannot be deleted because it is used in tasks'))
+            messages.error(request,
+                            _('The label cannot be \
+                              deleted because it is used in tasks'))
             return redirect('labels')
         label.delete()
         messages.info(request, _('The label has been deleted'))

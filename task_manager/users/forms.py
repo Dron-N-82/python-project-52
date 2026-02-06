@@ -1,31 +1,31 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+
 # from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext as _
+
 # from django.contrib.auth.views import LoginView, LogoutView
 # from django.forms import ModelForm
 from .models import User
-from django.utils.translation import gettext as _
 
 
 # class CreateUserForm(forms.ModelForm):
 class CreateUserForm(UserCreationForm):
     password1 = forms.CharField(
         required=True,
-        label=_("Password"), # 'Пароль'
+        label=_("Password"),  # 'Пароль'
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
                 }),
-        # help_text=_('Your password must contain at least 3 characters.')
-        help_text=f"<ul><li>{_('Your password must contain at least 3 characters.')}</li></ul>"
-        # '<ul><li>Ваш пароль должен содержать как минимум 3 символа.</li></ul>'
+        help_text=_('Your password must contain at least 3 characters.')
         )
     
     # password_confirm = forms.CharField(
     password2 = forms.CharField(
         required=True,
-        label=_("Confirm Password"), # 'Подтверждение пароля'
+        label=_("Confirm Password"),  # 'Подтверждение пароля'
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
@@ -34,25 +34,24 @@ class CreateUserForm(UserCreationForm):
         # Для подтверждения введите, пожалуйста, пароль ещё раз.
         )
         
-    
     class Meta:
         model = User
         fields = ['first_name',
-                  'last_name',
-                  'username',
-                #   'password',
-                #   'password_confirm'
+                'last_name',
+                'username',
                 'password1',
                 'password2',
-                  ]
+                ]
         labels = {
-            'first_name': _('First name'),               # ваше кастомное имя для поля 'first_name' 'Имя'
-            'last_name': _('Last_name'),                 # для 'last_name' 'Фамилия'
-            'username': _('Username'),                   # для 'username' 'Имя пользователя'
+            'first_name': _('First name'),  # кастомное имя
+                                            #  для поля 'first_name' 'Имя'
+            'last_name': _('Last_name'),  # для 'last_name' 'Фамилия'
+            'username': _('Username'),  # для 'username' 'Имя пользователя'
         }
         help_texts = {
-            'username': _('Required field. No more than 30 characters. Only letters, numbers, and symbols @/./+/-/_.')
-            # Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./+/-/_.
+            'username': _('Required field. No more than \
+                          30 characters. Only letters, \
+                          numbers, and symbols @/./+/-/_.')
         }
         widgets = {
             'first_name': forms.TextInput(
@@ -77,7 +76,8 @@ class CreateUserForm(UserCreationForm):
             # Пароли не совпадают.
             
             if len(password1) < 3:
-                raise ValidationError(_("Password must be more than 3 characters."))
+                raise ValidationError(
+                    _("Password must be more than 3 characters."))
             # "Пароль должен быть болше 3-х символов."
             
         return cleaned_data
@@ -96,12 +96,12 @@ class LoginUserForm(forms.Form):
             attrs={
                 'class': 'form-control', 'required': True
                 }),
-        label=_('Username'), # 'Имя пользователя'
+        label=_('Username'),  # 'Имя пользователя'
     )
     password1 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
                 }),
-        label=_("Password"), # 'Пароль'
+        label=_("Password"),  # 'Пароль'
         )

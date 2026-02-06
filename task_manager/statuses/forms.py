@@ -1,10 +1,12 @@
 from django import forms
-from django.core.exceptions import ValidationError
-from .models import Status
 from django.utils.translation import gettext as _
+
+# from django.core.exceptions import ValidationError
+from .models import Status
 
 
 class CreateStatusForm(forms.ModelForm):
+    
     class Meta:
         model = Status
         fields = ['name']

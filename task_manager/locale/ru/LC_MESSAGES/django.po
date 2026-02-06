@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-04 00:19+0300\n"
+"POT-Creation-Date: 2026-02-06 19:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/labels/forms.py:11 task_manager/labels/models.py:10
+#: task_manager/labels/forms.py:12 task_manager/labels/models.py:10
 #: task_manager/statuses/forms.py:11 task_manager/statuses/models.py:10
 #: task_manager/tasks/forms.py:34 task_manager/tasks/models.py:15
 #: task_manager/templates/labels/index.html:15
@@ -40,24 +40,26 @@ msgstr "Метка"
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/labels/views.py:19 task_manager/statuses/views.py:19
+#: task_manager/labels/views.py:17 task_manager/statuses/views.py:19
 #: task_manager/tasks/views.py:19 task_manager/users/views.py:88
 msgid "You are not logged in! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, войдите в систему."
 
-#: task_manager/labels/views.py:38
+#: task_manager/labels/views.py:36
 msgid "Label successfully created"
 msgstr "Метка успешно создана"
 
-#: task_manager/labels/views.py:71
+#: task_manager/labels/views.py:65
 msgid "Label data has been updated"
 msgstr "Метка обновлена"
 
-#: task_manager/labels/views.py:95
-msgid "The label cannot be deleted because it is used in tasks"
+#: task_manager/labels/views.py:90
+msgid ""
+"The label cannot be                               deleted because it is used "
+"in tasks"
 msgstr "Нельзя удалить метку связанную с задачей"
 
-#: task_manager/labels/views.py:98
+#: task_manager/labels/views.py:94
 msgid "The label has been deleted"
 msgstr "Метка удалёна"
 
@@ -88,7 +90,7 @@ msgstr "Нельзя удалить статус связанный с зада�
 msgid "The status has been deleted"
 msgstr "Статус удалён"
 
-#: task_manager/tasks/filter.py:22
+#: task_manager/tasks/filter.py:23
 msgid "Only self tasks"
 msgstr "Только свои задачи"
 
@@ -285,8 +287,8 @@ msgstr "Зарегистрировать"
 msgid "Deleting a user"
 msgstr "Удаление пользователя"
 
-#: task_manager/templates/users/index.html:15 task_manager/users/forms.py:51
-#: task_manager/users/forms.py:99
+#: task_manager/templates/users/index.html:15 task_manager/users/forms.py:48
+#: task_manager/users/forms.py:96
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -298,27 +300,31 @@ msgstr "Полное имя"
 msgid "Update user"
 msgstr "Обновить пользователя"
 
-#: task_manager/users/forms.py:15 task_manager/users/forms.py:106
+#: task_manager/users/forms.py:15 task_manager/users/forms.py:103
 msgid "Password"
 msgstr "Пароль"
 
-#: task_manager/users/forms.py:28
+#: task_manager/users/forms.py:20
+msgid "Your password must contain at least 3 characters."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: task_manager/users/forms.py:27
 msgid "Confirm Password"
 msgstr "Подтверждение пароля"
 
-#: task_manager/users/forms.py:33
+#: task_manager/users/forms.py:32
 msgid "To confirm, please enter your password again."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
-#: task_manager/users/forms.py:49
+#: task_manager/users/forms.py:46
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:50
+#: task_manager/users/forms.py:47
 msgid "Last_name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:54
+#: task_manager/users/forms.py:51
 msgid ""
 "Required field. No more than 30 characters. Only letters, numbers, and "
 "symbols @/./+/-/_."
@@ -326,11 +332,11 @@ msgstr ""
 "Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 
-#: task_manager/users/forms.py:76
+#: task_manager/users/forms.py:73
 msgid "The passwords do not match."
 msgstr "Пароли не совпадают."
 
-#: task_manager/users/forms.py:80
+#: task_manager/users/forms.py:77
 msgid "Password must be more than 3 characters."
 msgstr "Пароль должен быть болше 3-х символов."
 
@@ -366,8 +372,12 @@ msgstr "Вы можете удалить только своего пользо�
 msgid "The user has been deleted"
 msgstr "Пользователь удалён"
 
-#~ msgid "Your password must contain at least 3 characters."
-#~ msgstr "Ваш пароль должен содержать как минимум 3 символа."
+#~ msgid ""
+#~ "\n"
+#~ "                              The label cannot be\n"
+#~ "                              deleted because it is used in tasks\n"
+#~ "                              "
+#~ msgstr "Нельзя удалить метку связанную с задачей"
 
 #~ msgid "update"
 #~ msgstr "изменить"

@@ -2,12 +2,14 @@ import pytest
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from .models import Status
 from ..tasks.models import Task
+from .models import Status
 
 User = get_user_model()
 
 # Create your tests here.
+
+
 @pytest.fixture
 def login(client):
     user = User.objects.create_user(
@@ -15,6 +17,7 @@ def login(client):
         )
     client.login(username='test', password='ComplexPass123!')
     return client, user
+
 
 @pytest.mark.django_db
 class Test_Status:
@@ -26,7 +29,9 @@ class Test_Status:
     def test_create_status(self, login):
         self.client, self.user = login
         assert Status.objects.count() == 0
-        response = self.client.post(reverse('status_create'), {'name': 'Новая задача'})
+        response = self.client.post(
+            reverse('status_create'),
+            {'name': 'Новая задача'})
         assert response.status_code == 302
         assert Status.objects.filter(name='Новая задача').exists()
         assert Status.objects.count() == 1
@@ -56,7 +61,7 @@ class Test_Status:
     def test_delete_status_with_task(self, login):
         self.client, self.user = login
         status = Status.objects.create(name='Новая задача')
-        task = Task.objects.create(
+        Task.objects.create(
             name='Задача',
             author=self.user,
             status=status
