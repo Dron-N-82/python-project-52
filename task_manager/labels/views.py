@@ -87,8 +87,8 @@ class DeleteLabelView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         label = get_object_or_404(Label, id=label_id)
         if label.tasks.exists():
             messages.error(request,
-                            _('The label cannot be \
-                              deleted because it is used in tasks'))
+                           _('The label cannot be \
+                             deleted because it is used in tasks'))
             return redirect('labels')
         label.delete()
         messages.info(request, _('The label has been deleted'))

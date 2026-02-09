@@ -8,10 +8,11 @@
     <!-- Вход -->
 
     <form method="post">
-        
-        {% bootstrap_form form %}
         {% csrf_token %}
-        <input class="btn btn-outline-primary" type="submit" value="{% trans 'Login' %}">
+        {% bootstrap_form form %}
+        {% trans 'Log in' as login_text %}
+        {% bootstrap_button login_text button_type="submit" button_class="btn btn-outline-primary" %}
+        <!-- <input class="btn btn-outline-primary" type="submit" value="{% trans 'Login' %}"> -->
         <!-- "Выход" -->
 
     </form>

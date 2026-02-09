@@ -10,13 +10,15 @@ from .models import Task, User
 class TaskFilter(django_filters.FilterSet):
     status = django_filters.ModelChoiceFilter(
         queryset=Status.objects.all(),
-        # widget=forms.Select(attrs={'class': 'form-select'}),
+        widget=forms.Select(attrs={'class': 'form-control'}),
         )
     label = django_filters.ModelChoiceFilter(
         queryset=Label.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
         )
     executor = django_filters.ModelChoiceFilter(
         queryset=User.objects.filter(is_superuser=0),
+        widget=forms.Select(attrs={'class': 'form-control'}),
         )
     self_tasks = django_filters.BooleanFilter(
         widget=forms.CheckboxInput(),
