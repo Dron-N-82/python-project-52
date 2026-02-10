@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-10 00:19+0300\n"
+"POT-Creation-Date: 2026-02-10 01:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -254,11 +254,11 @@ msgstr "Создать статус"
 
 #: task_manager/templates/statuses/delete.html:7
 msgid "Deleting a status"
-msgstr "Удалить статус"
+msgstr "Удаление статуса"
 
 #: task_manager/templates/statuses/update.html:7
 msgid "Update status"
-msgstr "Обновить статус"
+msgstr "Изменение статуса"
 
 #: task_manager/templates/tasks/create.html:7
 #: task_manager/templates/tasks/index.html:7
@@ -331,10 +331,6 @@ msgid "Last_name"
 msgstr "Фамилия"
 
 #: task_manager/users/forms.py:52
-#, fuzzy
-#| msgid ""
-#| "Required field. No more than 30 characters. Only letters, numbers, and "
-#| "symbols @/./+/-/_."
 msgid ""
 "Required field. No more than                           30 characters. Only "
 "letters,                           numbers, and symbols @/./+/-/_."
@@ -352,19 +348,19 @@ msgstr "Пароль должен быть болше 3-х символов."
 
 #: task_manager/users/views.py:32
 msgid "The user is registered"
-msgstr "Пользователь зарегистрирован"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:64
 msgid "You have logged in successfully"
-msgstr "Вы успешно вошли"
+msgstr "Вы залогинены"
 
 #: task_manager/users/views.py:67
 msgid "Incorrect username or password"
 msgstr "Неверное имя пользователя или пароль"
 
 #: task_manager/users/views.py:79
-msgid "You're out"
-msgstr "Вы вышли"
+msgid "You are logged out"
+msgstr "Вы разлогинены"
 
 #: task_manager/users/views.py:101
 msgid "You can only change your user's details!"

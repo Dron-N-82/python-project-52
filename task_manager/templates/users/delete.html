@@ -6,7 +6,7 @@
 
     <h1 class="my-4">{% trans "Deleting a user" %}</h1>
     <!-- Удаление пользователя -->
-    <p>{% trans "Are you sure you want to delete" %}: "{{ user.first_name }} {{ user.last_name }}"?</p>
+    <p>{% trans "Are you sure you want to delete" %} "{{ user.first_name }} {{ user.last_name }}"?</p>
     <!-- Вы уверены, что хотите удалить -->
     <form action="{% url 'user_delete' user.id %}" method="post">
         {% csrf_token %}

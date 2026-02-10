@@ -76,7 +76,7 @@ class LoginUserView(View):
 class LogoutUserView(View):
     def post(self, request):
         auth.logout(request)
-        messages.info(request, _("You're out"))
+        messages.info(request, _("You are logged out"))
         return redirect('index')
     
 
