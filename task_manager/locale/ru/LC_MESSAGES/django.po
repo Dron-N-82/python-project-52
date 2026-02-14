@@ -381,7 +381,7 @@ msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:148
 msgid "The user has been deleted"
-msgstr "Пользователь удалён"
+msgstr "Пользователь успешно удален"
 
 #~ msgid "You can only change your user's details!"
 #~ msgstr "У вас нет прав для изменения другого пользователя."
