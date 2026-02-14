@@ -12,9 +12,10 @@ class TaskFilter(django_filters.FilterSet):
         queryset=Status.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'}),
         )
-    labels = django_filters.ModelChoiceFilter(
+    label = django_filters.ModelChoiceFilter(
         queryset=Label.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control'}),
+        label=_('Label'),
         )
     executor = django_filters.ModelChoiceFilter(
         queryset=User.objects.filter(is_superuser=0),
@@ -27,7 +28,7 @@ class TaskFilter(django_filters.FilterSet):
 
     class Meta:
         model = Task
-        fields = ['status', 'executor', 'labels', 'self_tasks']
+        fields = ['status', 'executor', 'label', 'self_tasks']
 
     def filter_self_tasks(self, queryset, name, value):
         if value:
