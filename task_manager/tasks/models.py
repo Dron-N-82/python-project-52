@@ -41,10 +41,10 @@ class Task(models.Model):
         verbose_name=_('Status'),
         related_name='tasks'
         )
-    label = models.ManyToManyField(
+    labels = models.ManyToManyField(
         Label,
         blank=True,
-        verbose_name=_('Label'),
+        verbose_name=_('Labels'),
         related_name='tasks'
     )
     created_at = models.DateTimeField(

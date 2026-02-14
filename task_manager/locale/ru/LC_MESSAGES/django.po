@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 16:45+0300\n"
+"POT-Creation-Date: 2026-02-14 17:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,19 +22,18 @@ msgstr ""
 
 #: task_manager/labels/forms.py:12 task_manager/labels/models.py:10
 #: task_manager/statuses/forms.py:13 task_manager/statuses/models.py:11
-#: task_manager/tasks/forms.py:36 task_manager/tasks/models.py:16
-#: task_manager/templates/labels/index.html:15
+#: task_manager/tasks/models.py:16 task_manager/templates/labels/index.html:15
 #: task_manager/templates/statuses/index.html:15
 #: task_manager/templates/tasks/index.html:28
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/labels/models.py:18 task_manager/tasks/forms.py:27
-#: task_manager/tasks/models.py:47
+#: task_manager/labels/models.py:18
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/labels/models.py:19 task_manager/templates/labels/index.html:7
+#: task_manager/labels/models.py:19 task_manager/tasks/models.py:47
+#: task_manager/templates/labels/index.html:7
 #: task_manager/templates/layout.html:42
 #: task_manager/templates/tasks/task.html:38
 msgid "Labels"
@@ -61,8 +60,7 @@ msgstr "Невозможно удалить метку, потому что он
 msgid "The label has been deleted"
 msgstr "Метка успешно удалена"
 
-#: task_manager/statuses/models.py:19 task_manager/tasks/forms.py:13
-#: task_manager/tasks/forms.py:38 task_manager/tasks/models.py:41
+#: task_manager/statuses/models.py:19 task_manager/tasks/models.py:41
 #: task_manager/templates/tasks/index.html:29
 msgid "Status"
 msgstr "Статус"
@@ -94,15 +92,13 @@ msgstr "Статус успешно удален"
 msgid "Only self tasks"
 msgstr "Только свои задачи"
 
-#: task_manager/tasks/forms.py:20 task_manager/tasks/models.py:27
-#: task_manager/templates/tasks/index.html:31
-msgid "Executor"
-msgstr "Исполнитель"
-
-#: task_manager/tasks/forms.py:37 task_manager/tasks/forms.py:45
 #: task_manager/tasks/models.py:20
 msgid "Description"
 msgstr "Описание"
+
+#: task_manager/tasks/models.py:27 task_manager/templates/tasks/index.html:31
+msgid "Executor"
+msgstr "Исполнитель"
 
 #: task_manager/tasks/models.py:34 task_manager/templates/tasks/index.html:30
 msgid "Author"
