@@ -146,4 +146,5 @@ class DeleteUserView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         if user:
             user.delete()
             messages.info(request, _('The user has been deleted'))
-        return redirect('index')
+        # return redirect('index')
+        return redirect('users')
