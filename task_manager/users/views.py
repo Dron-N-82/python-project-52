@@ -9,7 +9,7 @@ from django.views import View
 # from django.contrib.auth import authenticate #, login
 from task_manager.users.models import User
 
-from .forms import CreateUserForm, LoginUserForm
+from .forms import CreateUserForm, UpdateUserForm, LoginUserForm
 
 # class IndexView(TemplateView):
 #     template_name = 'users/index.html'
@@ -95,10 +95,10 @@ class UpdateUserView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         user_id = kwargs.get('id')
         # user = User.objects.get(id=user_id)
         user = get_object_or_404(User, id=user_id)
-        form = CreateUserForm(instance=user)
+        form = UpdateUserForm(instance=user)
         if request.user.pk != user.pk:
             messages.error(request,
-                           _("You can only change your user's details!")
+                           _("You do not have permission to modify another user.")
                            )
             return redirect('users')
         return render(
@@ -111,7 +111,9 @@ class UpdateUserView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         user_id = kwargs.get('id')
         # user = User.objects.get(id=user_id)
         user = get_object_or_404(User, id=user_id)
-        form = CreateUserForm(request.POST, instance=user)
+        # print(114, f'{user.id}: {user}')
+        form = UpdateUserForm(request.POST, instance=user)
+        # print(116, request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, _('User data has been updated'))
@@ -129,7 +131,7 @@ class DeleteUserView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         # user = User.objects.get(id=user_id)
         user = get_object_or_404(User, id=user_id)
         if request.user.pk != user.pk:
-            messages.error(request, _('You can only delete your own user!'))
+            messages.error(request, _('You do not have permission to modify another user.'))
             return redirect('users')
         return render(
             request,

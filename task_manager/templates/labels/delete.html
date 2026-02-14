@@ -6,7 +6,7 @@
 
     <h1 class="my-4">{% trans "Deleting a label" %}</h1>
     <!-- Удаление пользователя -->
-    <p>{% trans "Are you sure you want to delete" %}: "{{ label.name }}"?</p>
+    <p>{% trans "Are you sure you want to delete" %} {{ label.name }}?</p>
     <!-- Вы уверены, что хотите удалить -->
     <form action="{% url 'label_delete' label.id %}" method="post">
         {% csrf_token %}

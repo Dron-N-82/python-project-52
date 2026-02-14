@@ -10,10 +10,34 @@
 
     <form action="{% url 'user_update' id=user_id %}" method="post">
         {% csrf_token %}
+        {% comment %} <div class="form-group mb-3">
+            {{ form.first_name.label_tag }} {{ form.first_name }}
+        </div>
+        <div class="form-group mb-3">
+            {{ form.last_name.label_tag }} {{ form.last_name }}
+        </div>
+        <div class="form-group mb-3">
+            {{ form.username.label_tag }} {{ form.username }}
+            <div class="form-text">
+                {{ form.username.help_text }}
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            {{ form.password1.label_tag }} {{ form.password1 }}
+            <small class="form-text text-muted">
+                <ul><li>{{ form.password1.help_text }}</li></ul>
+            </small>
+        </div>
+        <div class="form-group mb-3">
+            {{ form.password2.label_tag }} {{ form.password2 }}
+            <small class="form-text text-muted">
+                {{ form.password2.help_text }}
+            </small>
+        </div> {% endcomment %}
         {% bootstrap_form form %}
         <input class="btn btn-outline-primary" type="submit" value="{% trans 'Update' %}">
         <!-- "Изменить" -->
-        </table>
+        {% comment %} </table> {% endcomment %}
     </form>
 
 

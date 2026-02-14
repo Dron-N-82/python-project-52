@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-10 01:22+0300\n"
+"POT-Creation-Date: 2026-02-14 00:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,7 +136,7 @@ msgstr "Задача обновлена"
 
 #: task_manager/tasks/views.py:90 task_manager/tasks/views.py:102
 msgid "Only the author can delete this task"
-msgstr "Только автор может удалить задачу"
+msgstr "Задачу может удалить только ее автор"
 
 #: task_manager/tasks/views.py:105
 msgid "The task has been deleted"
@@ -204,7 +204,7 @@ msgstr "Операции"
 #: task_manager/templates/tasks/index.html:47
 #: task_manager/templates/tasks/update.html:12
 #: task_manager/templates/users/index.html:33
-#: task_manager/templates/users/update.html:14
+#: task_manager/templates/users/update.html:39
 msgid "Update"
 msgstr "Изменить"
 
@@ -217,7 +217,7 @@ msgstr "Удалить"
 
 #: task_manager/templates/labels/update.html:7
 msgid "Update label"
-msgstr "Обновить метку"
+msgstr "Изменение метки"
 
 #: task_manager/templates/layout.html:12
 msgid "Task Manager Hexlet"
@@ -279,7 +279,7 @@ msgstr "Обзор задачи"
 
 #: task_manager/templates/tasks/update.html:7
 msgid "Update task"
-msgstr "Обновить задачу"
+msgstr "Изменение задачи"
 
 #: task_manager/templates/users/create.html:13
 msgid "Register"
@@ -290,7 +290,7 @@ msgid "Deleting a user"
 msgstr "Удаление пользователя"
 
 #: task_manager/templates/users/index.html:15 task_manager/users/forms.py:49
-#: task_manager/users/forms.py:99
+#: task_manager/users/forms.py:99 task_manager/users/forms.py:145
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -304,47 +304,56 @@ msgstr "Войти"
 
 #: task_manager/templates/users/update.html:8
 msgid "Update user"
-msgstr "Обновить пользователя"
+msgstr "Изменение пользователя"
 
 #: task_manager/users/forms.py:17 task_manager/users/forms.py:106
+#: task_manager/users/forms.py:113
 msgid "Password"
 msgstr "Пароль"
 
-#: task_manager/users/forms.py:22
+#: task_manager/users/forms.py:22 task_manager/users/forms.py:118
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: task_manager/users/forms.py:28
+#: task_manager/users/forms.py:28 task_manager/users/forms.py:123
 msgid "Confirm Password"
 msgstr "Подтверждение пароля"
 
-#: task_manager/users/forms.py:33
+#: task_manager/users/forms.py:33 task_manager/users/forms.py:128
 msgid "To confirm, please enter your password again."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
-#: task_manager/users/forms.py:46
+#: task_manager/users/forms.py:46 task_manager/users/forms.py:142
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:48
+#: task_manager/users/forms.py:48 task_manager/users/forms.py:144
 msgid "Last_name"
 msgstr "Фамилия"
 
 #: task_manager/users/forms.py:52
+msgid ""
+"Required field. No more than 30 characters. Only letters, numbers, and "
+"symbols @/./+/-/_."
+msgstr ""
+"Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
+
+#: task_manager/users/forms.py:75 task_manager/users/forms.py:171
+msgid "The passwords do not match."
+msgstr "Пароли не совпадают."
+
+#: task_manager/users/forms.py:80 task_manager/users/forms.py:176
+msgid "Password must be more than 3 characters."
+msgstr "Пароль должен быть болше 3-х символов."
+
+#: task_manager/users/forms.py:148
 msgid ""
 "Required field. No more than                           30 characters. Only "
 "letters,                           numbers, and symbols @/./+/-/_."
 msgstr ""
 "Обязательное поле. Не более 30 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
-
-#: task_manager/users/forms.py:75
-msgid "The passwords do not match."
-msgstr "Пароли не совпадают."
-
-#: task_manager/users/forms.py:80
-msgid "Password must be more than 3 characters."
-msgstr "Пароль должен быть болше 3-х символов."
 
 #: task_manager/users/views.py:32
 msgid "The user is registered"
@@ -362,18 +371,20 @@ msgstr "Неверное имя пользователя или пароль"
 msgid "You are logged out"
 msgstr "Вы разлогинены"
 
-#: task_manager/users/views.py:101
-msgid "You can only change your user's details!"
-msgstr "Вы можете изменить данные только своего пользователя!"
+#: task_manager/users/views.py:101 task_manager/users/views.py:134
+msgid "You do not have permission to modify another user."
+msgstr "У вас нет прав для изменения другого пользователя."
 
-#: task_manager/users/views.py:117
+#: task_manager/users/views.py:119
 msgid "User data has been updated"
-msgstr "Данные пользователя обновлены"
+msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:132
-msgid "You can only delete your own user!"
-msgstr "Вы можете удалить только своего пользователя!"
-
-#: task_manager/users/views.py:146
+#: task_manager/users/views.py:148
 msgid "The user has been deleted"
 msgstr "Пользователь удалён"
+
+#~ msgid "You can only change your user's details!"
+#~ msgstr "У вас нет прав для изменения другого пользователя."
+
+#~ msgid "You can only delete your own user!"
+#~ msgstr "У вас нет прав для изменения другого пользователя."
