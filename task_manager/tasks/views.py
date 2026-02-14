@@ -110,7 +110,7 @@ class ViewTaskView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('id')
         task = get_object_or_404(Task, id=task_id)
-        labels = task.label.all()
+        labels = task.labels.all()
         return render(
             request,
             "tasks/task.html",
