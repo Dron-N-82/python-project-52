@@ -24,7 +24,7 @@ class CreateTaskForm(forms.ModelForm):
     label = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
         # queryset=Task.objects.values_list('label', flat=True).distinct(),
-        label=_('Label'),
+        label=_('Labels'),
         widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
         required=False
     )
@@ -42,7 +42,7 @@ class CreateTaskForm(forms.ModelForm):
                 attrs={'class': 'form-control',
                     'required': True}),
             'description': forms.Textarea(attrs={
-                'placeholder': _('Enter a description of the task...'),
+                'placeholder': _('Description'),
                 'class': 'form-control',
                 'rows': 10}),
             }

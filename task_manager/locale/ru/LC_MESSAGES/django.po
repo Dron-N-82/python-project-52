@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 16:30+0300\n"
+"POT-Creation-Date: 2026-02-14 16:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,13 +99,10 @@ msgstr "Только свои задачи"
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/tasks/forms.py:37 task_manager/tasks/models.py:20
+#: task_manager/tasks/forms.py:37 task_manager/tasks/forms.py:45
+#: task_manager/tasks/models.py:20
 msgid "Description"
 msgstr "Описание"
-
-#: task_manager/tasks/forms.py:45
-msgid "Enter a description of the task..."
-msgstr "Введите описание задачи..."
 
 #: task_manager/tasks/models.py:34 task_manager/templates/tasks/index.html:30
 msgid "Author"
@@ -380,6 +377,9 @@ msgstr "Пользователь успешно изменен"
 #: task_manager/users/views.py:148
 msgid "The user has been deleted"
 msgstr "Пользователь успешно удален"
+
+#~ msgid "Enter a description of the task..."
+#~ msgstr "Введите описание задачи..."
 
 #~ msgid "You can only change your user's details!"
 #~ msgstr "У вас нет прав для изменения другого пользователя."
