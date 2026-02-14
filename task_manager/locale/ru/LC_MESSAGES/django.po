@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 00:29+0300\n"
+"POT-Creation-Date: 2026-02-14 16:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,17 +51,15 @@ msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:65
 msgid "Label data has been updated"
-msgstr "Метка обновлена"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:90
-msgid ""
-"The label cannot be                              deleted because it is used "
-"in tasks"
-msgstr "Нельзя удалить метку связанную с задачей"
+msgid "The label cannot be deleted because it is used in tasks"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: task_manager/labels/views.py:94
 msgid "The label has been deleted"
-msgstr "Метка удалёна"
+msgstr "Метка успешно удалена"
 
 #: task_manager/statuses/models.py:19 task_manager/tasks/forms.py:13
 #: task_manager/tasks/forms.py:38 task_manager/tasks/models.py:41
@@ -80,17 +78,17 @@ msgstr "Статус успешно создан"
 
 #: task_manager/statuses/views.py:72
 msgid "Status data has been updated"
-msgstr "Статус обновлён"
+msgstr "Статус успешно изменен"
 
 #: task_manager/statuses/views.py:102
 msgid ""
 "The status cannot be                                  deleted because it is "
 "used in tasks"
-msgstr "Нельзя удалить статус связанный с задачей"
+msgstr "Невозможно удалить статус, потому что он используется"
 
 #: task_manager/statuses/views.py:108
 msgid "The status has been deleted"
-msgstr "Статус удалён"
+msgstr "Статус успешно удален"
 
 #: task_manager/tasks/filter.py:25
 msgid "Only self tasks"
@@ -132,7 +130,7 @@ msgstr "Задача успешно создана"
 
 #: task_manager/tasks/views.py:76
 msgid "Task data has been updated"
-msgstr "Задача обновлена"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/views.py:90 task_manager/tasks/views.py:102
 msgid "Only the author can delete this task"
@@ -140,7 +138,7 @@ msgstr "Задачу может удалить только ее автор"
 
 #: task_manager/tasks/views.py:105
 msgid "The task has been deleted"
-msgstr "Задача удалена"
+msgstr "Задача успешно удалена"
 
 #: task_manager/templates/index.html:13
 msgid "Hello from Hexlet!"
