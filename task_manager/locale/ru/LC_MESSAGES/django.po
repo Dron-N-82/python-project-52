@@ -79,10 +79,8 @@ msgid "Status data has been updated"
 msgstr "Статус успешно изменен"
 
 #: task_manager/statuses/views.py:102
-#, fuzzy
-#| msgid "The label cannot be deleted because it is used in tasks"
 msgid "The status cannot be deleted because it is used in tasks"
-msgstr "Невозможно удалить метку, потому что она используется"
+msgstr "Невозможно удалить статус"
 
 #: task_manager/statuses/views.py:108
 msgid "The status has been deleted"
