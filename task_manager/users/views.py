@@ -97,8 +97,9 @@ class UpdateUserView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         user = get_object_or_404(User, id=user_id)
         form = UpdateUserForm(instance=user)
         if request.user.pk != user.pk:
-            messages.error(request,
-                           _("You do not have permission to modify another user.")
+            messages.error(
+                request,
+                _("You do not have permission to modify another user.")
                            )
             return redirect('users')
         return render(
@@ -131,7 +132,10 @@ class DeleteUserView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
         # user = User.objects.get(id=user_id)
         user = get_object_or_404(User, id=user_id)
         if request.user.pk != user.pk:
-            messages.error(request, _('You do not have permission to modify another user.'))
+            messages.error(
+                request,
+                _('You do not have permission to modify another user.')
+                )
             return redirect('users')
         return render(
             request,

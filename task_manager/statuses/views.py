@@ -99,8 +99,8 @@ class DeleteStatusView(AuthRequiredMessageMixin, LoginRequiredMixin, View):
                 # Если возникла ошибка ProtectedError,
                 # покажите сообщение и перенаправьте
                 messages.error(request,
-                               _('The status cannot be \
-                                 deleted because it is used in tasks'))
+                               _('The status cannot be '
+                                 'deleted because it is used in tasks'))
                 # Невозможно удалить статус,
                 # потому что он используется в задачах."
                 return redirect('statuses')
