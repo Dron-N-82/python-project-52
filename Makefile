@@ -2,7 +2,7 @@
 install:
 	uv sync
 
-dev:
+run:
 	uv run manage.py runserver 0.0.0.0:8081
 
 collectstatic:
@@ -19,7 +19,7 @@ build:
 
 # запуск приложения на render.com
 render-start:
-	gunicorn task_manager.wsgi
+	uv run gunicorn task_manager.wsgi
 
 test:
 # 	uv run pytest --ds=task_manager.settings --reuse-db -v -l -n auto

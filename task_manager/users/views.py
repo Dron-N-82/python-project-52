@@ -9,10 +9,7 @@ from django.views import View
 # from django.contrib.auth import authenticate #, login
 from task_manager.users.models import User
 
-from .forms import CreateUserForm, UpdateUserForm, LoginUserForm
-
-# class IndexView(TemplateView):
-#     template_name = 'users/index.html'
+from .forms import CreateUserForm, LoginUserForm, UpdateUserForm
 
 
 class IndexView(View):
