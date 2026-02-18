@@ -71,7 +71,7 @@ class UsersTest(TestCase):
         self.client.login(username='test', password='ComplexPass123!')
         url_delete = reverse('user_delete', kwargs={"id": self.user.pk})  
         response = self.client.post(url_delete)
-        self.assertRedirects(response, reverse('index'))
+        self.assertRedirects(response, reverse('users'))
         
         self.assertFalse(User.objects.filter(username='test').exists())
 

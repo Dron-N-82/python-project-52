@@ -52,12 +52,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'django_extensions',
+    'django_filters',
     'task_manager',
     'task_manager.users',
     'task_manager.statuses',
     'task_manager.tasks',
     'task_manager.labels',
-    'django_filters',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -101,12 +101,13 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR,  'db.sqlite3'),
     }
 }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES["default"].update(db_from_env)
+if db_from_env:
+    DATABASES["default"].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -125,13 +126,6 @@ AUTH_PASSWORD_VALIDATORS = [
     #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     # },
 ]
-
-ROLLBAR = {
-    'access_token': ROLLBAR_ACCESS_TOKEN,
-    'environment': 'development' if DEBUG else 'production',
-    'branch': 'master',
-    'root': BASE_DIR,
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
@@ -155,3 +149,10 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_URL = '/login/'
+
+ROLLBAR = {
+    'access_token': ROLLBAR_ACCESS_TOKEN,
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': BASE_DIR,
+}

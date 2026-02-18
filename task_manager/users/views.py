@@ -18,7 +18,7 @@ from .forms import CreateUserForm, UpdateUserForm, LoginUserForm
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         # users = User.objects.all()
-        users = User.objects.filter(is_superuser=0)
+        users = User.objects.filter(is_superuser=0).order_by('id')
         context = {"users": users}
         return render(request, "users/index.html", context)
     

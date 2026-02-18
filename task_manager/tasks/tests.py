@@ -110,5 +110,5 @@ class Test_Tasks:
             )
         response = self.client.get(reverse('tasks'))
         assert response.status_code == 200
-        assert Task.objects.filter(author_id=1).count() == 1
-        assert Task.objects.filter(executor_id=2).count() == 2
+        assert Task.objects.filter(author_id=self.user1.id).count() == 1
+        assert Task.objects.filter(executor_id=self.user2.id).count() == 2

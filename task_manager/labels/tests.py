@@ -66,7 +66,7 @@ class Test_Label:
             author=self.user,
             status=status
             )
-        task.label.add(label)   # Добавляем метку к задаче
+        task.labels.add(label)   # Добавляем метку к задаче
         delete_url = reverse("label_delete", args=[label.pk])
         response = self.client.post(delete_url)
         assert Label.objects.filter(id=label.pk).exists()
