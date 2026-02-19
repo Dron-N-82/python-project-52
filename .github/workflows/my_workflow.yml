@@ -42,7 +42,7 @@ jobs:
           uv run python -c "import django,sys; print('Django', django.get_version())"
       
       - name: Install ruff
-        run: uv pip install ruff
+        run: uv add ruff
     
       - name: Run Ruff linter
         run: make lint
@@ -57,6 +57,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
             -Dsonar.projectKey=Dron-N-82_python-project-52
