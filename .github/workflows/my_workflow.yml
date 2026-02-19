@@ -41,6 +41,9 @@ jobs:
           uv --version
           uv run python -c "import django,sys; print('Django', django.get_version())"
       
+      - name: Install ruff
+        run: uv pip install ruff
+    
       - name: Run Ruff linter
         run: make lint
 
