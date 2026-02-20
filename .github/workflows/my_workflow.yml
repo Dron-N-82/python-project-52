@@ -61,5 +61,5 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=Dron-N-82_python-project-52
-            -Dsonar.organization=Dron-N-82
+            -Dsonar.organization=dron-n-82
             -Dsonar.python.coverage.reportPaths=coverage.xml
