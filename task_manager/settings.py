@@ -38,6 +38,7 @@ ALLOWED_HOSTS = [
     '192.168.10.5',
     'webserver',
     'testserver',
+    'python-project-52-32q5.onrender.com',
 ]
 
 
