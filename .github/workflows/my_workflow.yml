@@ -63,3 +63,4 @@ jobs:
             -Dsonar.projectKey=Dron-N-82_python-project-52
             -Dsonar.organization=dron-n-82
             -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.github.commit_sha=${{ github.sha }}
